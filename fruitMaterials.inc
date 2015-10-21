@@ -8,17 +8,15 @@
 };
 
 #declare Cherry1ColorMap=color_map{          
-    [0.1 color rgb <.9,0,.1>*1.15]
-    [0.3 color rgb <.9,0,.1>*1.15]                //to create a sharp transition, assign two colors the same value
-    [0.6 color rgb <.9,0,.1>*1.15]
-    [0.8 color rgb <.9,0,.1>*1.15]
-    [0.8 color rgb <0,0,.71>*.9]
+    [0.1 color rgb <.9,0,.15>*1.1]
+    [0.3 color rgb <.9,0,.15>*1.1]                
+    [0.3 color rgb <.9,0,.15>*.75]
     };
     
 #declare Cherry1GradientPigment=pigment{
-    gradient <0,1,0> //chooses which direction the gradient goes
+    gradient <0,1,0> 
     color_map {Cherry1ColorMap}
-    scale .25
+    scale 1.5
     translate <0,0,0>
     }; 
 
@@ -29,21 +27,34 @@
 	}
 }
 //==================================================
-#declare Cherries2_MappedPigment = pigment { color rgb <.9,0,0>*1.15 };
+#declare Cherries2_MappedPigment = pigment { color rgb <.9,0,.08>*1.1 };
 
 #declare Cherries2_Finish = finish {
 	specular 0.7 //Max highlight intensity: 0 -> 1
       roughness 0.01 //surface roughness: 0.0005 -> 1             
-};
+}; 
+
+#declare Cherry2ColorMap=color_map{          
+    [0.1 color rgb <.9,0,.08>*1.1]
+    [0.3 color rgb <.9,0,.08>*1.1]                
+    [0.3 color rgb <.9,0,.12>*.75]
+    };
+    
+#declare Cherry2GradientPigment=pigment{
+    gradient <0,1,0> 
+    color_map {Cherry2ColorMap}
+    scale 1.67
+    translate <0,0,0>
+    }; 
 
 #declare Cherries2_Material_ = material {
 	texture {
-		pigment { uv_mapping Cherries2_MappedPigment }
+		pigment { uv_mapping Cherry2GradientPigment }
 		finish { Cherries2_Finish }
 	}
 }
 //==================================================
-#declare Plate_MappedPigment = pigment { color rgb <0.01,0.30,0.06> }
+#declare Plate_MappedPigment = pigment { color rgb <0.01,0.30,0.06>*1.1 }
 
 #declare Plate_Finish = finish {
 	specular 0.7 //Max highlight intensity: 0 -> 1
@@ -57,7 +68,7 @@
 	}
 }
 //==================================================
-#declare GrapeStem_MappedPigment = pigment { color rgb <0.72,0.46,0.07> }
+#declare GrapeStem_MappedPigment = pigment { color rgb <0.72,0.46,0.07>*.5 }
 
 #declare GrapeStem_Finish = finish {
 	specular 0.5 //Max highlight intensity: 0 -> 1
@@ -105,11 +116,24 @@
 #declare Plum2_Finish = finish {
 	specular 0.5 //Max highlight intensity: 0 -> 1
       roughness 0.05 //surface roughness: 0.0005 -> 1             
-};                
+};
+
+#declare PlumColorMap=color_map{          
+    [0.1 color rgb <0.42,0.07,0.08>*.68]
+    [0.5 color rgb <0.42,0.07,0.08>*.68]                
+    [0.8 color rgb <0.58,0.07,0.08>*.68]
+    };
+    
+#declare PlumGradientPigment=pigment{
+    gradient <0,1,0> 
+    color_map {PlumColorMap}
+    scale 1
+    translate <0,0,0>
+    };                 
 
 #declare Plum2_Material_ = material {
 	texture {
-		pigment { uv_mapping Plum2_MappedPigment }
+		pigment { uv_mapping PlumGradientPigment }
 		finish { Plum2_Finish }
 	}
 }
@@ -123,7 +147,7 @@
 
 #declare Plum3_Material_ = material {
 	texture {
-		pigment { uv_mapping Plum3_MappedPigment }
+		pigment { uv_mapping Plum3_MappedPigment } 
 		finish { Plum3_Finish }
 	}
 }
@@ -133,11 +157,24 @@
 #declare Plum4_Finish = finish {
 	specular 0.5 //Max highlight intensity: 0 -> 1
       roughness 0.05 //surface roughness: 0.0005 -> 1             
-};
+}; 
+
+#declare PlumColorMap2=color_map{          
+    [0.1 color rgb <0.4,0.06,0.07>*.75]
+    [0.5 color rgb <0.6,0.06,0.07>*.75]                
+    [0.8 color rgb <0.4,0.06,0.07>*.75]
+    };
+    
+#declare PlumGradientPigment2=pigment{
+    gradient <0,1,0> //chooses which direction the gradient goes
+    color_map {PlumColorMap2}
+    scale 1
+    translate <0,0,0>
+    }; 
 
 #declare Plum4_Material_ = material {
 	texture {
-		pigment { uv_mapping Plum4_MappedPigment }
+		pigment { uv_mapping PlumGradientPigment2 }
 		finish { Plum4_Finish }
 	}
 }
@@ -205,7 +242,7 @@
 #declare Pear_MappedPigment = pigment { color rgb <0.80,0.75,0.06> }
 
 
-#declare ColorMap=color_map{       
+#declare PearColorMap=color_map{       
     [0.1 color rgb<0.80,0.75,0.06>]
     [0.3 color rgb<0.80,0.75,0.06>]                
     [0.6 color rgb<0.80,0.75,0.06>]
@@ -213,10 +250,24 @@
     };
 #declare PearBumpsPigment=pigment{
     bumps
-    color_map {ColorMap}
+    color_map {PearColorMap}
     scale .03
     turbulence .5
     };
+    
+#declare PearStemPigment=pigment{ rgb<.45,.34,.15>};     
+    
+#declare PearPigmentMap=pigment_map{
+    [0.1 PearBumpsPigment]
+    [0.9 PearBumpsPigment]
+    [0.9 PearStemPigment]
+    }; 
+    
+#declare PearPigment_New=pigment{
+    gradient <0,1,0>
+    pigment_map {PearPigmentMap}
+    scale 1
+    };       
 
 #declare Pear_Finish = finish {
 	specular 0.5 //Max highlight intensity: 0 -> 1
@@ -225,7 +276,7 @@
 
 #declare Pear_Material_ = material {
 	texture {
-		pigment { uv_mapping PearBumpsPigment }
+		pigment { uv_mapping PearPigment_New } 
 		finish { Pear_Finish }
 	}
 }
@@ -288,7 +339,7 @@
 	}
 }
 //==================================================
-#declare RightGrapes_MappedPigment = pigment { color rgbf <0.46,0.08,0.16,0.9> }
+#declare RightGrapes_MappedPigment = pigment { color rgbf <0.36,0.13,0.46,0.9>*.45 }
 
 #declare RightGrapes_Finish = finish {
 	specular 0.5 //Max highlight intensity: 0 -> 1
@@ -352,7 +403,7 @@
 };
 
 #declare TopBananaColorMap=color_map{          
-    [0.1 color rgb <0.92,0.87,0.05>*1.15]
+    [0.1 color rgb <0.92,0.95,0.05>*1.15]
     [0.3 color rgb <0.89,0.74,0.06>*1.15]                
     [0.85 color rgb <0.92,0.77,0.05>*1.15]
     [0.93 color rgb <0.49,0.24,0.16>]
@@ -369,6 +420,10 @@
 	texture {
 		pigment { uv_mapping TopBananaGradientPigment } //Banana1_MappedPigment
 		finish { Banana1_Finish }
+		normal{
+		    bumps 0.1
+		    turbulence .3
+		    }
 	}
 }
 //==================================================
@@ -380,7 +435,7 @@
 };
 
 #declare BottomBananaColorMap=color_map{          
-    [0.1 color rgb <0.89,0.74,0.06>*1.15]
+    [0.1 color rgb <0.89,0.84,0.06>*1.15]
     [0.3 color rgb <0.92,0.87,0.06>*1.15]                
     [0.85 color rgb <0.89,0.64,0.06>*1.15]
     [0.95 color rgb <0.49,0.24,0.16>*.65]
@@ -397,5 +452,9 @@
 	texture {
 		pigment { uv_mapping BottomBananaGradientPigment }  //Banana2_MappedPigment
 		finish { Banana2_Finish }
+		normal{
+		    bumps 0.15
+		    turbulence .5
+		    }
 	}
 }//==================================================
