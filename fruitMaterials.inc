@@ -395,30 +395,46 @@
 	}
 }
 //==================================================
-#declare Banana1_MappedPigment = pigment { color rgb <0.92,0.87,0.05>*1.15 }
+#declare Banana1_MappedPigment = pigment { color rgb <0.92,0.77,0.05>*1.15 }
 
 #declare Banana1_Finish = finish {
 	specular 0.4 //Max highlight intensity: 0 -> 1
       roughness 0.25 //surface roughness: 0.0005 -> 1             
 };
+    
+#declare BananaStemPigment=pigment{rgb<0.49,0.24,0.16>*.65};        
 
 #declare TopBananaColorMap=color_map{          
-    [0.1 color rgb <0.92,0.95,0.05>*1.15]
-    [0.3 color rgb <0.89,0.74,0.06>*1.15]                
-    [0.85 color rgb <0.92,0.77,0.05>*1.15]
-    [0.93 color rgb <0.49,0.24,0.16>]
+    [0.25 color rgb <0.92,0.77,0.05>*1.15]
+    [0.3 color rgb <0.49,0.24,0.06>]                
+    [0.35 color rgb <0.92,0.77,0.05>*1.15]
     };
     
-#declare TopBananaGradientPigment=pigment{
-    gradient <0,1,0> 
+#declare TopBananaBumpsPigment=pigment{
+    bumps 
     color_map {TopBananaColorMap}
-    scale 1
-    translate <0,-2,0>
-    }; 
+    scale .006
+    };
+    
+#declare TopBananaPigmentMap=pigment_map{
+    [0.2 Banana1_MappedPigment]
+    [0.3 TopBananaBumpsPigment]
+    [0.45 Banana1_MappedPigment]
+    [0.6 Banana1_MappedPigment]
+    [0.7 TopBananaBumpsPigment]
+    [0.85 Banana1_MappedPigment]
+    [0.9 Banana1_MappedPigment]
+    [0.95 BananaStemPigment]
+    };
+    
+#declare TopBananaPigment_New=pigment{
+    gradient <0,1,0>
+    pigment_map{TopBananaPigmentMap}
+    }          
 
 #declare Banana1_Material_ = material {
 	texture {
-		pigment { uv_mapping TopBananaGradientPigment } //Banana1_MappedPigment
+		pigment { uv_mapping TopBananaPigment_New } //Banana1_MappedPigment
 		finish { Banana1_Finish }
 		normal{
 		    bumps 0.1
@@ -432,25 +448,41 @@
 #declare Banana2_Finish = finish {
 	specular 0.4 //Max highlight intensity: 0 -> 1
       roughness 0.25 //surface roughness: 0.0005 -> 1             
-};
+};       
 
 #declare BottomBananaColorMap=color_map{          
     [0.1 color rgb <0.89,0.84,0.06>*1.15]
-    [0.3 color rgb <0.92,0.87,0.06>*1.15]                
-    [0.85 color rgb <0.89,0.64,0.06>*1.15]
-    [0.95 color rgb <0.49,0.24,0.16>*.65]
+    [0.25 color rgb <0.89,0.64,0.06>*1.15]
+    [0.3 color rgb <0.49,0.24,0.06>] 
+    [0.35 color rgb <0.89,0.64,0.06>*1.15]               
+    [0.8 color rgb <0.89,0.64,0.06>*1.15]
     };
     
-#declare BottomBananaGradientPigment=pigment{
-    gradient <0,1,0> 
+#declare BottomBananaBumpsPigment=pigment{
+    bumps                                                 
     color_map {BottomBananaColorMap}
-    scale 1
-    translate <0,-2,0>
-    }; 
+    scale .006
+    turbulence 0
+    };
+    
+#declare BananaStemPigment=pigment{rgb<0.49,0.24,0.16>*.65};    
+    
+#declare BottomBananaPigmentMap=pigment_map{
+    [0.4 Banana2_MappedPigment]
+    [0.6 BottomBananaBumpsPigment]
+    [0.8 Banana2_MappedPigment]
+    [0.9 Banana2_MappedPigment]
+    [0.95 BananaStemPigment]
+    };
+    
+#declare BottomBananaPigment_New=pigment{
+    gradient <0,1,0>
+    pigment_map{BottomBananaPigmentMap}
+    }         
 
 #declare Banana2_Material_ = material {
 	texture {
-		pigment { uv_mapping BottomBananaGradientPigment }  //Banana2_MappedPigment
+		pigment { uv_mapping BottomBananaPigment_New }  //Banana2_MappedPigment
 		finish { Banana2_Finish }
 		normal{
 		    bumps 0.15
