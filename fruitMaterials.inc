@@ -3,8 +3,8 @@
 #declare Cherries1_MappedPigment = pigment { color rgb <.9,0,.1>*1.15 };
 
 #declare Cherries1_Finish = finish {
-	specular 0.7 //Max highlight intensity: 0 -> 1
-      roughness 0.01 //surface roughness: 0.0005 -> 1             
+	specular 0.95 //Max highlight intensity: 0 -> 1
+      roughness 0.001 //surface roughness: 0.0005 -> 1             
 };
 
 #declare Cherry1ColorMap=color_map{          
@@ -30,8 +30,8 @@
 #declare Cherries2_MappedPigment = pigment { color rgb <.9,0,.08>*1.1 };
 
 #declare Cherries2_Finish = finish {
-	specular 0.7 //Max highlight intensity: 0 -> 1
-      roughness 0.01 //surface roughness: 0.0005 -> 1             
+	specular 0.95 //Max highlight intensity: 0 -> 1
+      roughness 0.001 //surface roughness: 0.0005 -> 1             
 }; 
 
 #declare Cherry2ColorMap=color_map{          
@@ -313,7 +313,7 @@
 
 #declare Apple_Finish = finish {
 	specular 0.5 //Max highlight intensity: 0 -> 1
-      roughness 0.01 //surface roughness: 0.0005 -> 1             
+      roughness 0.005 //surface roughness: 0.0005 -> 1             
 };    
 
 #declare AppleColorMap=color_map{          
