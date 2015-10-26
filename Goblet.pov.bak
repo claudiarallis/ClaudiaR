@@ -1,0 +1,22 @@
+#include "colors.inc"
+
+#declare LatheCamera=camera{
+    location<0, 5, -12>
+    look_at <0,5,0>
+    };
+    
+light_source{
+    <20,20,-20>
+    color White
+    }    
+    
+#declare Cup=lathe{
+    linear_spline //straight lines connect the dots
+    9 //how many points you have to connect
+    <0,0>,<3,0>,<3,1>,<1,1>,<1,3>,<4,7>,<2,4>,<0,4>
+    pigment{White}
+    finish{
+        ambient .2
+        specular .4
+        }
+        }    
